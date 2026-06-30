@@ -1,0 +1,384 @@
+/* ========================================
+   CUSTOM CSS FOR PROFILE WEBSITE
+   ======================================== */
+
+/* ========================================
+   SCROLLBAR STYLING (WebKit)
+   ======================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0D1117;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF6B5B;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF8A6B;
+}
+
+/* ========================================
+   GRADIENT TEXT
+   ======================================== */
+.gradient-text {
+    background: linear-gradient(135deg, #FF6B5B 0%, #FF8A6B 50%, #FFA07A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 8s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* ========================================
+   GLASS CARD STYLING
+   ======================================== */
+.glass-card {
+    background: rgba(15, 22, 41, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 107, 91, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Light mode glass card (if user toggles to light) */
+:root:not(.dark) .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   REVEAL ANIMATION (Scroll Fade-In)
+   ======================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delay for child elements */
+.reveal[data-delay="0"] {
+    transition-delay: 0ms;
+}
+
+.reveal[data-delay="1"] {
+    transition-delay: 100ms;
+}
+
+.reveal[data-delay="2"] {
+    transition-delay: 200ms;
+}
+
+.reveal[data-delay="3"] {
+    transition-delay: 300ms;
+}
+
+.reveal[data-delay="4"] {
+    transition-delay: 400ms;
+}
+
+.reveal[data-delay="5"] {
+    transition-delay: 500ms;
+}
+
+.reveal[data-delay="6"] {
+    transition-delay: 600ms;
+}
+
+/* ========================================
+   TECH TAGS
+   ======================================== */
+.tag {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(255, 107, 91, 0.15);
+    color: #FFB5A7;
+    border: 1px solid rgba(255, 107, 91, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: rgba(255, 107, 91, 0.25);
+    border-color: rgba(255, 107, 91, 0.5);
+    color: #FF8A6B;
+}
+
+/* ========================================
+   TYPEWRITER CURSOR
+   ======================================== */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 0.2em;
+    background-color: #FF6B5B;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   NAVIGATION STYLING
+   ======================================== */
+.nav-link {
+    position: relative;
+    color: #cbd5e1;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FF6B5B, #FF8A6B);
+    border-radius: 1px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #FF8A6B;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background: #FF8A6B;
+}
+
+/* ========================================
+   NAVBAR SCROLLED STATE
+   ======================================== */
+nav.scrolled {
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 107, 91, 0.1);
+}
+
+/* ========================================
+   HERO BACKGROUND ANIMATION
+   ======================================== */
+.hero-bg {
+    background: linear-gradient(-45deg, #0D1117, #0F1419, #0D1117, #0A0E14);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ========================================
+   SKILL CARD SPECIAL EFFECTS
+   ======================================== */
+.skill-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 91, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+/* ========================================
+   PROJECT CARD EFFECTS
+   ======================================== */
+.project-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   BACK TO TOP BUTTON
+   ======================================== */
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================================
+   LIGHT MODE ADJUSTMENTS
+   ======================================== */
+:root:not(.dark) {
+    background-color: #F8FAFC;
+}
+
+:root:not(.dark) body {
+    background-color: #F8FAFC;
+    color: #1E293B;
+}
+
+:root:not(.dark) .text-slate-300 {
+    color: #64748B;
+}
+
+:root:not(.dark) .text-slate-400 {
+    color: #78909C;
+}
+
+:root:not(.dark) .border-slate-800 {
+    border-color: #E2E8F0;
+}
+
+:root:not(.dark) .bg-slate-900\/30 {
+    background-color: rgba(248, 250, 252, 0.3);
+}
+
+:root:not(.dark) .tag {
+    background: rgba(255, 107, 91, 0.1);
+    color: #FF6B5B;
+    border-color: rgba(255, 107, 91, 0.2);
+}
+
+:root:not(.dark) .tag:hover {
+    background: rgba(255, 107, 91, 0.2);
+    color: #FF5040;
+}
+
+:root:not(.dark) nav.scrolled {
+    background: rgba(248, 250, 252, 0.95);
+    border-bottom-color: rgba(255, 107, 91, 0.15);
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 640px) {
+    .gradient-text {
+        font-size: 2rem;
+    }
+
+    /* Ensure hero section looks good on mobile */
+    #hero {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    /* Adjust skill card grid on mobile */
+    .skill-card {
+        padding: 1rem;
+    }
+
+    /* Make text smaller on mobile */
+    body {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navigation adjustments */
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
+    /* Hero text sizing */
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #hero h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Project grid single column on tablet portrait */
+    #projects .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   UTILITY ANIMATIONS
+   ======================================== */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   SMOOTH SCROLL BEHAVIOR (Fallback)
+   ======================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========================================
+   SELECTION COLOR
+   ======================================== */
+::selection {
+    background-color: rgba(255, 107, 91, 0.3);
+    color: #FFE8E0;
+}
+
+::-moz-selection {
+    background-color: rgba(255, 107, 91, 0.3);
+    color: #FFE8E0;
+}

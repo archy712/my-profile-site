@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동 - 포트폴리오</title>
+
+    <!-- Google Fonts: Noto Sans KR -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#FF6B5B',
+                            light: '#FF8A6B',
+                            dark: '#FF5040'
+                        },
+                        accent: '#FF8A6B'
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        gradient: {
+                            '0%,100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0D1117] text-slate-100 transition-colors duration-300">
+    <!-- ======= CUSTOMIZATION GUIDE ======= -->
+    <!--
+    다음 항목들을 찾아 수정하세요:
+
+    1. 이름: "홍길동" → 당신의 이름
+    2. 역할 배열: script.js 파일의 roles 배열 수정
+    3. 소개: Hero 섹션 아래 <p class="text-slate-400"> 태그
+    4. 이메일: mailto 링크 수정
+    5. GitHub URL: 프로필 링크 수정
+    6. 프로젝트 1-3: 각 프로젝트 카드 정보 수정
+    7. 기술 스택: 기술 스택 섹션의 카드들
+    -->
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#hero" class="text-2xl font-black gradient-text">
+                <!-- PLACEHOLDER: 이름 -->
+                홍길동
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex gap-8 items-center">
+                <li>
+                    <a href="#hero" class="nav-link active">홈</a>
+                </li>
+                <li>
+                    <a href="#skills" class="nav-link">기술스택</a>
+                </li>
+                <li>
+                    <a href="#projects" class="nav-link">프로젝트</a>
+                </li>
+                <li>
+                    <a href="#contact" class="nav-link">연락처</a>
+                </li>
+            </ul>
+
+            <!-- Right Side: Theme Toggle + Mobile Menu -->
+            <div class="flex items-center gap-4">
+                <!-- Dark/Light Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-800/50 transition-colors ml-4" title="테마 전환">
+                    <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2v6m0 8v6M4.22 4.22l4.24 4.24m6.08 0l4.24-4.24M2 12h6m8 0h6m-15.78 7.78l4.24-4.24m6.08 0l4.24 4.24M12 1a11 11 0 110 22 11 11 0 010-22z"/>
+                    </svg>
+                    <svg id="moon-icon" class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-slate-800/50 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-800">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#hero" class="block text-slate-300 hover:text-blue-400 transition-colors">홈</a>
+                <a href="#skills" class="block text-slate-300 hover:text-blue-400 transition-colors">기술스택</a>
+                <a href="#projects" class="block text-slate-300 hover:text-blue-400 transition-colors">프로젝트</a>
+                <a href="#contact" class="block text-slate-300 hover:text-blue-400 transition-colors">연락처</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 hero-bg -z-10"></div>
+
+        <!-- Blob Decorations -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-orange-500/15 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl -z-10"></div>
+
+        <!-- Content -->
+        <div class="max-w-4xl mx-auto px-6 text-center md:text-left w-full">
+            <div class="space-y-6">
+                <!-- Greeting -->
+                <p class="text-accent text-sm font-medium tracking-widest uppercase mb-3 reveal" data-delay="0">
+                    안녕하세요 👋
+                </p>
+
+                <!-- Name -->
+                <h1 class="text-5xl md:text-7xl font-black mb-4 gradient-text reveal" data-delay="1">
+                    <!-- PLACEHOLDER: 이름 -->
+                    홍길동
+                </h1>
+
+                <!-- Role with Typewriter -->
+                <h2 class="text-2xl md:text-3xl font-semibold text-slate-300 mb-6 reveal" data-delay="2">
+                    <span id="role-text">풀스택 개발자</span><span class="cursor">|</span>
+                </h2>
+
+                <!-- Bio -->
+                <p class="text-slate-400 text-lg leading-relaxed max-w-2xl reveal" data-delay="3">
+                    <!-- PLACEHOLDER: 소개 -->
+                    웹 기술을 사랑하는 개발자입니다. 깔끔한 코드와 훌륭한 사용자 경험을 만드는 것이 저의 목표입니다.
+                    프론트엔드부터 백엔드까지 다양한 프로젝트를 진행하며 성장하고 있습니다.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-6 reveal" data-delay="4">
+                    <a href="#projects" class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full transition-all hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5">
+                        포트폴리오 보기
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-slate-600 hover:border-orange-400 text-slate-300 hover:text-orange-400 font-semibold px-8 py-3 rounded-full transition-all">
+                        연락하기
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Title -->
+            <div class="text-center mb-16 reveal">
+                <p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">
+                    내가 다룰 수 있는 기술들
+                </p>
+                <h2 class="text-4xl font-bold mb-4">기술 스택</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- PLACEHOLDER: 기술 스택 카드들 -->
+                <!-- HTML -->
+                <div class="skill-card reveal glass-card flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-500/20 transition-all duration-300" data-delay="1">
+                    <span class="text-4xl">📄</span>
+                    <span class="text-sm font-medium text-slate-300">HTML5</span>
+                </div>
+
+                <!-- CSS -->
+                <div class="skill-card reveal glass-card flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300" data-delay="2">
+                    <span class="text-4xl">🎨</span>
+                    <span class="text-sm font-medium text-slate-300">CSS3</span>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="skill-card reveal glass-card flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300" data-delay="3">
+                    <span class="text-4xl">⚡</span>
+                    <span class="text-sm font-medium text-slate-300">JavaScript</span>
+                </div>
+
+                <!-- React -->
+                <div class="skill-card reveal glass-card flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300" data-delay="4">
+                    <span class="text-4xl">⚛️</span>
+                    <span class="text-sm font-medium text-slate-300">React</span>
+                </div>
+
+                <!-- Node.js -->
+                <div class="skill-card reveal glass-card flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300" data-delay="5">
+                    <span class="text-4xl">🟢</span>
+                    <span class="text-sm font-medium text-slate-300">Node.js</span>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="skill-card reveal glass-card flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300" data-delay="6">
+                    <span class="text-4xl">🍃</span>
+                    <span class="text-sm font-medium text-slate-300">MongoDB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 bg-slate-900/30 relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Title -->
+            <div class="text-center mb-16 reveal">
+                <p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">
+                    내가 만든 것들
+                </p>
+                <h2 class="text-4xl font-bold mb-4">프로젝트</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Projects Grid - 3 Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Project Card 1 -->
+                <div class="project-card reveal glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 flex flex-col">
+                    <!-- Top Gradient Line -->
+                    <div class="h-1 bg-gradient-to-r from-orange-500 to-red-500"></div>
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Project Header -->
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-3xl">📱</span>
+                            <div class="flex gap-2">
+                                <!-- PLACEHOLDER: GitHub 링크 -->
+                                <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors" title="GitHub">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <!-- PLACEHOLDER: 데모 링크 -->
+                                <a href="#" class="text-slate-400 hover:text-orange-300 transition-colors" title="Live Demo">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors">
+                            <!-- PLACEHOLDER: 프로젝트 제목 -->
+                            프로젝트 1
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            <!-- PLACEHOLDER: 프로젝트 설명 -->
+                            이 프로젝트에서는 무엇을 만들었는지, 어떤 기술을 사용했는지, 어떤 문제를 해결했는지 설명해주세요.
+                        </p>
+
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card reveal glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 flex flex-col">
+                    <!-- Top Gradient Line -->
+                    <div class="h-1 bg-gradient-to-r from-orange-500 to-red-500"></div>
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Project Header -->
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-3xl">🛒</span>
+                            <div class="flex gap-2">
+                                <!-- PLACEHOLDER: GitHub 링크 -->
+                                <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors" title="GitHub">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <!-- PLACEHOLDER: 데모 링크 -->
+                                <a href="#" class="text-slate-400 hover:text-orange-300 transition-colors" title="Live Demo">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors">
+                            <!-- PLACEHOLDER: 프로젝트 제목 -->
+                            프로젝트 2
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            <!-- PLACEHOLDER: 프로젝트 설명 -->
+                            이 프로젝트에서는 무엇을 만들었는지, 어떤 기술을 사용했는지, 어떤 문제를 해결했는지 설명해주세요.
+                        </p>
+
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Stripe API</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card reveal glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 flex flex-col">
+                    <!-- Top Gradient Line -->
+                    <div class="h-1 bg-gradient-to-r from-orange-500 to-red-500"></div>
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Project Header -->
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-3xl">🎮</span>
+                            <div class="flex gap-2">
+                                <!-- PLACEHOLDER: GitHub 링크 -->
+                                <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors" title="GitHub">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <!-- PLACEHOLDER: 데모 링크 -->
+                                <a href="#" class="text-slate-400 hover:text-orange-300 transition-colors" title="Live Demo">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors">
+                            <!-- PLACEHOLDER: 프로젝트 제목 -->
+                            프로젝트 3
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            <!-- PLACEHOLDER: 프로젝트 설명 -->
+                            이 프로젝트에서는 무엇을 만들었는지, 어떤 기술을 사용했는지, 어떤 문제를 해결했는지 설명해주세요.
+                        </p>
+
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Canvas API</span>
+                            <span class="tag">Webpack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center reveal">
+                <!-- PLACEHOLDER: GitHub 프로필 -->
+                <a href="https://github.com/yourusername" class="inline-flex items-center justify-center gap-2 border border-orange-500 hover:bg-orange-500/10 text-orange-400 hover:text-orange-300 font-semibold px-8 py-3 rounded-full transition-all">
+                    GitHub에서 모두 보기
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative">
+        <div class="max-w-2xl mx-auto text-center">
+            <!-- Section Title -->
+            <div class="mb-12 reveal">
+                <p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">
+                    연락 방법
+                </p>
+                <h2 class="text-4xl font-bold mb-4">함께 일해요</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Contact Text -->
+            <p class="text-slate-400 text-lg mb-8 reveal">
+                <!-- PLACEHOLDER: 연락 메시지 -->
+                프로젝트에 대해 이야기하거나 질문이 있으신가요? 언제든지 연락주세요!
+            </p>
+
+            <!-- Email Button -->
+            <!-- PLACEHOLDER: 이메일 -->
+            <a href="mailto:your.email@example.com" class="inline-flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white text-lg font-semibold px-10 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-1 reveal mb-12">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                이메일 보내기
+            </a>
+
+            <!-- Social Links -->
+            <div class="flex justify-center gap-10 reveal">
+                <!-- GitHub -->
+                <!-- PLACEHOLDER: GitHub 링크 -->
+                <a href="https://github.com/yourusername" class="w-12 h-12 rounded-full border border-slate-700 hover:border-orange-500 flex items-center justify-center text-slate-400 hover:text-orange-400 transition-all hover:scale-110" title="GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+
+                <!-- LinkedIn (Optional) -->
+                <!-- PLACEHOLDER: LinkedIn 링크 -->
+                <a href="https://linkedin.com/in/yourusername" class="w-12 h-12 rounded-full border border-slate-700 hover:border-orange-500 flex items-center justify-center text-slate-400 hover:text-orange-400 transition-all hover:scale-110" title="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.25-.129.599-.129.949v5.418h-3.554s.05-8.736 0-9.646h3.554v1.364c.429-.662 1.196-1.608 2.907-1.608 2.122 0 3.716 1.388 3.716 4.368v5.522zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.705 0-.955.77-1.702 1.933-1.702 1.159 0 1.918.747 1.94 1.704 0 .947-.781 1.703-1.958 1.703zm1.676 11.597H3.669V9.539h3.344v10.913zM22.224 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.224 0z"/>
+                    </svg>
+                </a>
+
+                <!-- Twitter (Optional) -->
+                <!-- PLACEHOLDER: Twitter 링크 -->
+                <a href="https://twitter.com/yourusername" class="w-12 h-12 rounded-full border border-slate-700 hover:border-orange-500 flex items-center justify-center text-slate-400 hover:text-orange-400 transition-all hover:scale-110" title="Twitter">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>© <span id="year">2025</span> <!-- PLACEHOLDER: 이름 -->홍길동. 모든 권리 보유.</p>
+        <p class="mt-2 text-xs">Made with ♥ by <!-- PLACEHOLDER: 이름 -->홍길동</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-orange-500 hover:bg-orange-600 text-white flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/30 z-40">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
